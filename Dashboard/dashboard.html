@@ -202,7 +202,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
 
               	  <p class="centered"><a href="../images/profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">John Doe</h5>
+              	  <h5 class="centered">London Fire Brigade - Camden</h5>
 
                   <li class="mt">
                       <a class="active" href="index.html">
@@ -317,10 +317,24 @@
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
 					  			<span class="li_heart"></span>
-					  			<h3>300</h3>
+					  			<h3> <span id="countdown">300</span></h3>
                   <br>
+
+                 
+
+<script type="text/javascript">
+    var timeleft = 300;
+    var downloadTimer = setInterval(function(){
+    timeleft=timeleft-Math.floor(Math.random()*10);
+    document.getElementById("countdown").textContent = timeleft;
+     document.getElementById("countdown1").textContent = timeleft;
+    if(timeleft <= 100)
+        clearInterval(downloadTimer);
+    },1000);
+</script>    
+
                   			</div>
-					  			<p>300 people inside the building at the moment!</p>
+					  			<p> <span id="countdown1">300</span> people inside the building at the moment!</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
