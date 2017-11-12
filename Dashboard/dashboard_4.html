@@ -28,6 +28,12 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+      <style>
+          .box1 {
+              border-bottom: none;
+          }
+      </style>
   </head>
 
   <body>
@@ -316,7 +322,7 @@
                   	<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
-					  			<span class="li_heart"></span>
+                                <i class="fa fa-users" style="font-size: 50px;" aria-hidden="true"></i>
 					  			<h3><span id="timer"></span></h3>
                                 <script type="application/javascript">
                                     var count=300;
@@ -338,46 +344,70 @@
                                 </script>
                   <br>
                   			</div>
-					  			<p>300 people inside the building at the moment!</p>
+                            <p><span style="color: #989a9f;" id="timer2"></span></p>
+                            <script type="application/javascript">
+                                var count=300;
+
+                                var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+                                function timer()
+                                {
+                                    count=count-(1 + Math.floor(Math.random() * 6));
+                                    if (count <= 0)
+                                    {
+                                        clearInterval(counter);
+                                        //counter ended, do something here
+                                        return;
+                                    }
+
+                                    document.getElementById("timer2").innerHTML=count + " people inside the building at the moment!";
+                                }
+                            </script>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_cloud"></span>
+                                <i class="fa fa-rss" style="font-size: 50px; margin-bottom: 28px;" aria-hidden="true"></i>
+
 					  			<h3>+500</h3>
                   <br>
                   			</div>
-					  			<p>500 Active Sensors</p>
-                  		</div>
-                  		<div class="col-md-2 col-sm-2 box0">
+                            <p style="color: #989a9f;">500 Active Sensors</p>
+                        </div>
+                        <div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_stack"></span>
-					  			<h3>23:47</h3>
+					  			<!--<span class="li_stack"></span>-->
+
+                                <i class="fa fa-refresh" style="font-size: 50px;margin-bottom: 28px;" aria-hidden="true"></i>
+					  			<h3>18:35</h3>
                   <br>
                   			</div>
-					  			<p>The status has been last updated at 23:47</p>
+					  			<p style="color: #989a9f;">Last updated at 18:35</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_news"></span>
+					  			<!--<span class="li_news"></span>-->
+                                <i class="fa fa-caret-square-o-up" style="font-size: 50px;margin-bottom: 28px;" aria-hidden="true"></i>
 					  			<h3>1</h3>
                   <br>
                   			</div>
-					  			<p>One Active Fire Alarm in Trump Tower</p>
+					  			<p style="color: #989a9f;">One Active Fire Alarm in Trump Tower</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_data"></span>
+                                <i class="fa fa-building-o" style="font-size: 50px;margin-bottom: 49px;" aria-hidden="true"></i>
 					  			<h3 style="font-size:20px;">9th Floor</h3>
                   			</div>
-					  			<p>Fire Alarm triggered at floor 9. Sensor ID: #10BFGT  </p>
+					  			<p style="color: #989a9f;">Fire Alarm triggered at floor 9. Sensor ID: #10BFGT  </p>
                   		</div>
 
                   	</div><!-- /row mt -->
 
 
+
+
                       <div class="row mt">
                       <!-- SERVER STATUS PANELS -->
-                      	<div class="col-md-4 col-sm-4 mb">
+                      	<div class="col-md-6 col-sm-6 mb">
                       		<div class="white-panel pn donut-chart">
                       			<div class="white-header">
 						  			<h5>Blueprint 1</h5>
@@ -387,7 +417,7 @@
                       	</div><!-- /col-md-4-->
 
 
-                      	<div class="col-md-4 col-sm-4 mb">
+                      	<div class="col-md-6 col-sm-6 mb">
                       		<div class="white-panel pn">
                       			<div class="white-header">
 						  			<h5>Blueprint 2</h5>
@@ -398,7 +428,7 @@
                       		</div>
                       	</div><!-- /col-md-4 -->
 
-						<div class="col-md-4 mb">
+						<div class="col-md-6 mb" style="overflow: hidden;">
 							<!-- WHITE PANEL - TOP USER -->
 							<div class="white-panel pn">
 								<div class="white-header">
@@ -408,14 +438,25 @@
                                     <img src="../images/building_plan3.png" style="max-width: 100%" alt="">
                                 </div>
 						</div><!-- /col-md-4 -->
+                        </div>
 
+                            <div class="col-md-6 mb" style="overflow: hidden;">
+                                <!-- WHITE PANEL - TOP USER -->
+                                <div class="white-panel pn">
+                                    <div class="white-header">
+                                        <h5>Blueprint 4</h5>
+                                    </div>
+                                    <div class="centered">
+                                        <img src="../images/blueprint.jpg" style="max-width: 100%" alt="">
+                                    </div>
+                                </div><!-- /col-md-4 -->
 
                     </div><!-- /row -->
 
 
 					<div class="row">
 						<!-- TWITTER PANEL -->
-						
+
 
 					</div><!-- /row -->
 
@@ -426,39 +467,39 @@
                       </div>
                       <div class="custom-bar-chart">
                           <ul class="y-axis">
-                              <li><span>10.000</span></li>
-                              <li><span>8.000</span></li>
-                              <li><span>6.000</span></li>
-                              <li><span>4.000</span></li>
-                              <li><span>2.000</span></li>
+                              <li><span>500</span></li>
+                              <li><span>400</span></li>
+                              <li><span>300</span></li>
+                              <li><span>200</span></li>
+                              <li><span>100</span></li>
                               <li><span>0</span></li>
                           </ul>
                           <div class="bar">
-                              <div class="title">JAN</div>
+                              <div class="title">18:00</div>
                               <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
                           </div>
                           <div class="bar ">
-                              <div class="title">FEB</div>
+                              <div class="title">18:05</div>
                               <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
                           </div>
                           <div class="bar ">
-                              <div class="title">MAR</div>
+                              <div class="title">18:10</div>
                               <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
                           </div>
                           <div class="bar ">
-                              <div class="title">APR</div>
+                              <div class="title">18:15</div>
                               <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
                           </div>
                           <div class="bar">
-                              <div class="title">MAY</div>
+                              <div class="title">18:20</div>
                               <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
                           </div>
                           <div class="bar ">
-                              <div class="title">JUN</div>
+                              <div class="title">18:25</div>
                               <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
                           </div>
                           <div class="bar">
-                              <div class="title">JUL</div>
+                              <div class="title">18:35</div>
                               <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
                           </div>
                       </div>
