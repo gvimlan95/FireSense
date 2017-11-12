@@ -290,6 +290,73 @@
           <section class="wrapper">
               <div class="row">
                   <div class="col-lg-9 main-chart">
+
+                      <div id="myModal" class="modal">
+                          <!-- Modal content -->
+                          <div class="modal-content" style="height:200px">
+                              <div class="alert alert-danger" style="height:100%;text-align:center;font-size:30px">
+                                  <strong>Alert!</strong><br><br>
+                                  <span style="font-size:25px">Flat 12 is on fire</span>
+                              </div>
+                              <span class="close">&times;</span>
+                          </div>
+                      </div>
+
+                      <div id="map" style="height: 320px;"></div>
+                      <script>
+                          var map;
+                          var citymap = {
+                              NorthLondon: {
+                                  center: {lat: 51.580859, lng: -0.199536},
+                                  population: 400,
+                                  fillColor: '#cbcbef'
+                              },
+                              SouthLondon: {
+                                  center: {lat: 51.518946, lng: -0.143944},
+                                  population: 450,
+                                  fillColor: '#a7eaac'
+                              },
+                              EastLondon: {
+                                  center: {lat: 51.532674, lng: -0.039157},
+                                  population: 550,
+                                  fillColor: '#ffbcbc'
+                              },
+                              WestLondon: {
+                                  center: {lat: 51.532116, lng: -0.063588},
+                                  population: 320,
+                                  fillColor: '#fdcb99'
+                              },
+                              CentralLondon: {
+                                  center: {lat: 51.507978, lng: -0.126155},
+                                  population: 170,
+                                  fillColor: '#efff8f'
+                              }
+                          };
+
+                          function initMap() {
+                              map = new google.maps.Map(document.getElementById('map'), {
+                                  center: {lat: 51.524755, lng: -0.088691},
+                                  zoom: 11
+                              });
+
+                              for (var city in citymap) {
+                                  // Add the circle for this city to the map.
+                                  var cityCircle = new google.maps.Circle({
+                                      strokeColor: '#a2a2a2',
+                                      strokeOpacity: 0.8,
+                                      strokeWeight: 2,
+                                      fillColor: citymap[city].fillColor,
+                                      fillOpacity: 0.75,
+                                      map: map,
+                                      center: citymap[city].center,
+                                      radius: Math.sqrt(citymap[city].population) * 100
+                                  });
+                              }
+                          }
+                      </script>
+                      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWlhWnZ-XjtI586myBV9DDIZzbGmY3Cpo&callback=initMap"
+                              async defer></script>
+
                     <div class="col-md-6" style="margin-top:1%">
                       <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="padding: 10% 0; font-size:30px;background-color:white;color:grey;">Chancery Lane</a>
                     </div>
@@ -419,10 +486,13 @@ window.onclick = function(event) {
     }
 }
 
-setTimeout(function () {document.getElementById("myBtn").click();}, 5000);
+//setTimeout(function () {document.getElementById("myBtn").click();}, 5000);
+        $('.header').click(function () {
+            document.getElementById("myBtn").click();
+        })
     </script>
 
-    </script>
+
 
 
   </body>

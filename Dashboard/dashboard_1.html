@@ -38,15 +38,12 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Dashboard</b></a>
+            <a href="index.html" class="logo"><b>FireSense</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
-                <ul class="nav top-menu">
+                <ul class="nav top-menu" style="display: none;">
                     <!-- settings start -->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
@@ -290,26 +287,109 @@
           <section class="wrapper">
               <div class="row">
                   <div class="col-lg-9 main-chart">
-                  <div style="margin-top:10%">
+
+                      <div id="myModal" class="modal">
+                          <!-- Modal content -->
+                          <div class="modal-content" style="height:200px">
+                              <div class="alert alert-danger" style="height:100%;text-align:center;font-size:30px">
+                                  <strong>EMERGENCY!</strong><br><br>
+                                  <span style="font-size:25px">
+                                    8 Brown's Buildings, London EC3A 8AL
+                                  </span>
+                                  <br>
+                                  <a href="./dashboard_4.html" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="position: relative; padding: 2% 0; font-size: 15px;width: 50%; margin: 0 auto; color: #fff; background: #ef1515;">
+                                      Go To Location <i class="fa fa-circle" aria-hidden="true" style="color: #cbcbef; position: absolute; top: 35%; right: 65px;"></i>
+                                  </a>
+                              </div>
+                              <span class="close">&times;</span>
+                          </div>
+                      </div>
+
+                      <div id="map" style="height: 320px;"></div>
+                      <script>
+                          var map;
+                          var citymap = {
+                              NorthLondon: {
+                                  center: {lat: 51.580859, lng: -0.199536},
+                                  population: 400,
+                                  fillColor: '#cbcbef'
+                              },
+                              SouthLondon: {
+                                  center: {lat: 51.518946, lng: -0.143944},
+                                  population: 450,
+                                  fillColor: '#a7eaac'
+                              },
+                              EastLondon: {
+                                  center: {lat: 51.532674, lng: -0.039157},
+                                  population: 550,
+                                  fillColor: '#ffbcbc'
+                              },
+                              WestLondon: {
+                                  center: {lat: 51.532116, lng: -0.063588},
+                                  population: 320,
+                                  fillColor: '#fdcb99'
+                              },
+                              CentralLondon: {
+                                  center: {lat: 51.507978, lng: -0.126155},
+                                  population: 170,
+                                  fillColor: '#efff8f'
+                              }
+                          };
+
+                          function initMap() {
+                              map = new google.maps.Map(document.getElementById('map'), {
+                                  center: {lat: 51.524755, lng: -0.088691},
+                                  zoom: 11
+                              });
+
+                              for (var city in citymap) {
+                                  // Add the circle for this city to the map.
+                                  var cityCircle = new google.maps.Circle({
+                                      strokeColor: '#a2a2a2',
+                                      strokeOpacity: 0.8,
+                                      strokeWeight: 2,
+                                      fillColor: citymap[city].fillColor,
+                                      fillOpacity: 0.75,
+                                      map: map,
+                                      center: citymap[city].center,
+                                      radius: Math.sqrt(citymap[city].population) * 100
+                                  });
+                              }
+                          }
+                      </script>
+                      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWlhWnZ-XjtI586myBV9DDIZzbGmY3Cpo&callback=initMap"
+                              async defer></script>
+
+                  <div style="margin-top:5%">
                     <div class="row">
                         <div class="col-md-6">
-                          <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="padding: 10% 0; font-size:30px;background-color:white;color:grey;">North London</a>
+                          <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="position: relative; padding: 5% 0; font-size:25px;background-color:#e0e0e0;color:grey;">
+                              North London <i class="fa fa-circle" aria-hidden="true" style="color: #cbcbef; position: absolute; top: 35%; right: 65px;"></i>
+                          </a>
                       </div>
                       <div class="col-md-6">
-                        <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="padding: 10% 0; font-size:30px;background-color:white;color:grey;">South London</a>
+                        <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="position: relative; padding: 5% 0; font-size:25px;background-color:#e0e0e0;color:grey;">
+                            South London <i class="fa fa-circle" aria-hidden="true" style="color: #a7eaac; position: absolute; top: 35%; right: 65px;"></i>
+                        </a>
                       </div>
                     </div>
                     <div class="row" style="margin-top:2%">
                         <div class="col-md-6">
-                          <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="padding: 10% 0; font-size:30px;background-color:white;color:grey;">East London</a>
+                          <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="position: relative; padding: 5% 0; font-size:25px;background-color:#e0e0e0;color:grey;">
+                              East London <i class="fa fa-circle" aria-hidden="true" style="color: #ffbcbc; position: absolute; top: 35%; right: 65px;"></i>
+                          </a>
                       </div>
                       <div class="col-md-6">
-                        <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="padding: 10% 0; font-size:30px;background-color:white;color:grey;">West London</a>
+                        <a href="#" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="position: relative; padding: 5% 0; font-size:25px;background-color:#e0e0e0;color:grey;">
+                            West London <i class="fa fa-circle" aria-hidden="true" style="color: #fdcb99; position: absolute; top: 35%; right: 65px;"></i>
+                        </a>
                       </div>
                     </div>
                     <div class="row" style="margin-top:2%">
                       <div class="col-md-6">
-                        <a href="./dashboard_2.html" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="padding: 10% 0; font-size:30px;background-color:white;color:grey;">Central London</a>
+                        <a href="./dashboard_2.html" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true" style="position: relative; padding: 5% 0; font-size:25px;background-color:#e0e0e0;color:grey;">
+                            Central London <i class="fa fa-circle" aria-hidden="true" style="color: #efff8f; position: absolute; top: 35%; right: 65px;"></i>
+                        </a>
                       </div>
                     </div>
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->
@@ -395,23 +475,25 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
-}
+};
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
 
-setTimeout(function () {document.getElementById("myBtn").click();}, 5000);
-    </script>
+//setTimeout(function () {document.getElementById("myBtn").click();}, 5000);
 
+        $('.header').click(function () {
+            document.getElementById("myBtn").click();
+        })
     </script>
 
 
